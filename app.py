@@ -5,9 +5,19 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense
 import streamlit as st
 
-# Load the dataset
-data = pd.read_csv('C:/Users/Lenovo/Desktop/ML/vegetable_prices.csv')
+import os
 
+# Get the current working directory
+current_directory = os.getcwd()
+
+# Specify the filename
+filename = 'vegetable_prices.csv'
+
+# Construct the relative path
+relative_path = os.path.join(current_directory, filename)
+
+# Now you can use relative_path to read the CSV file
+data = pd.read_csv(relative_path)
 # Convert 'Date' column to datetime
 data['Date'] = pd.to_datetime(data['Date'], format='mixed')
 
